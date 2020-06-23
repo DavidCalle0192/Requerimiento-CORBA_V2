@@ -86,15 +86,15 @@ public class ClienteDeObjetos {
             inidicador = new IndicadoresDTO(0,0,0,id);
             
                      Random fcr = new Random();
-                    inidicador.setFrecuenciaCardiaca((int) (60 + fcr.nextFloat() * (80 - 60)));
+                    inidicador.setFrecuenciaCardiaca((int) (50 + fcr.nextFloat() * (90 - 50)));//60-80
                     //listaPaciente.get(i).setListaIndicadores(objIndicador);
                     
                     Random frr = new Random();
-                    inidicador.setFrecuenciaRespiratoria((int) (70 + frr.nextFloat() * (90 - 70)));
+                    inidicador.setFrecuenciaRespiratoria((int) (60 + frr.nextFloat() * (100 - 60)));//70-90
                     //listaPaciente.get(i).setListaIndicadores(objIndicador);
                     
                     Random ter = new Random();
-                    inidicador.setTemperatura((float) (36.2 + ter.nextFloat() * (38.2 - 36.2)));
+                    inidicador.setTemperatura((float) (35.2 + ter.nextFloat() * (38.2 - 35.2)));//36.2-38.2
                     //listaPaciente.get(i).setListaIndicadores(objIndicador);
      
                     return inidicador;
