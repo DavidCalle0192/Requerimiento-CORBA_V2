@@ -210,14 +210,14 @@ public class RegistarPaciente extends javax.swing.JFrame {
 
     public boolean validarID() {
         if (txf_id.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "El campo se encuentra vacio");
+            JOptionPane.showMessageDialog(null, "El campo ID se encuentra vacio");
             return false;
         } else if (!esNumerico(txf_id.getText())) {
-            JOptionPane.showMessageDialog(null, "Ingrese un valor númerico");
+            JOptionPane.showMessageDialog(null, "Ingrese un valor númerico en el campo ID");
             txf_id.setText("");
             return false;
         } else if (Integer.parseInt(txf_id.getText()) < 0) {
-            JOptionPane.showMessageDialog(null, "Ingrese un valor positivo");
+            JOptionPane.showMessageDialog(null, "Ingrese un valor númerico positivo en el campo ID");
             txf_id.setText("");
             return false;
         } else {

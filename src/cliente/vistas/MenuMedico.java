@@ -308,7 +308,7 @@ public class MenuMedico extends javax.swing.JFrame {
 
         aux = 1;
         if (co.obtenerObjGestionPaciente().getNumRegistros() == co.obtenerObjGestionPaciente().getMaxPacientes()) {
-            JOptionPane.showMessageDialog(null, "Limite de registros alcanzados");
+            JOptionPane.showMessageDialog(null, "Se ha llegado al maximo de registros");
         } else {
 
             RegistarPaciente rp = new RegistarPaciente(co);
