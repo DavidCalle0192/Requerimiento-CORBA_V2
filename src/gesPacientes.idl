@@ -1,0 +1,58 @@
+module cliente{
+    module sop_corba{
+        interface Paciente{
+            void alertarPaciente(in string mensaje);
+        };
+    };
+};
+
+
+module servidorAlertas{
+    module dto{
+        struct PacienteDTO{
+                string nombres;
+                string apellidos;
+                string tipo_id;
+                long id;
+                string direccion;
+            };
+
+            struct IndicadoresDTO{
+                long frecuenciaCardiaca;
+                long frecuenciaRespiratoria;
+                float temperatura;
+            };
+
+            struct AlertaDTO{
+                IndicadoresDTO indicadores;
+                string fecha;
+                string hora;
+                long puntuacion;
+            };
+
+            struct HistorialAlertasDTO{
+                AlertaDTO alertas[6];
+                PacienteDTO objPaciente;
+            };
+    };
+
+    module sop_corba{
+        interface GestionPacientes{
+            boolean registrarPaciente(in dto::PacienteDTO objPaciente, in cliente::sop_corba::Paciente refCliente, out string resultado);
+            boolean actualizarPaciente(in dto::PacienteDTO objPaciente);
+            dto::PacienteDTO buscarPaciente(in long idPaciente);
+            boolean enviarIndicadores(in long idPaciente,in servidorAlertas::dto::IndicadoresDTO objIndicadores);
+            boolean establecerMaxPacientes(in long num);
+            long getMaxPacientes();
+            long getNumRegistros();
+        };
+    };
+};
+
+module servidorNotificaciones{
+    module sop_corba{
+        interface Notificaciones{
+            void enviarAlerta(in servidorAlertas::dto::HistorialAlertasDTO objHistorial);
+        };
+    };
+};
