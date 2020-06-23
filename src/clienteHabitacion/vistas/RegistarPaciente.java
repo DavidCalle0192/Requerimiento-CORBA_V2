@@ -266,7 +266,7 @@ public class RegistarPaciente extends javax.swing.JFrame {
                     paciente = new PacienteDTO(nombres, apellidos, tipoId, id, direccion);
                     boolean rta = co.obtenerObjGestionPaciente().registrarPaciente(//Se crea/registra paciente
                             paciente,
-                            co.obtenerServant(),//referencia ¿averguar como se optiene?
+                            co.obtenerServant(),
                             co.obtenerStringHolder()
                     );
                     if (rta) {

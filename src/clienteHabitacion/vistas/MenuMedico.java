@@ -86,7 +86,7 @@ public class MenuMedico extends javax.swing.JFrame {
         txtArea_seguimiento.setText("");
         Timer timer = new Timer();
         TimerTask task = new TimerTask() {
-
+        //GestionPacientes ref;
             @Override
             public void run() {
 
@@ -335,6 +335,7 @@ public class MenuMedico extends javax.swing.JFrame {
             btn_paraSeguimiento.setEnabled(true);
             btn_paraSeguimiento.setVisible(true);
             hilo();
+            
         }
 
     }//GEN-LAST:event_btn_iniciarSeguimientoActionPerformed

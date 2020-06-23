@@ -57,5 +57,13 @@ public final class IndicadoresDTO implements org.omg.CORBA.portable.IDLEntity
         this.temperatura = temperatura;
     }
 
+    public int getIdPaciente() {
+        return idPaciente;
+    }
+
+    public void setIdPaciente(int idPaciente) {
+        this.idPaciente = idPaciente;
+    }
+
     
 } // class IndicadoresDTO
