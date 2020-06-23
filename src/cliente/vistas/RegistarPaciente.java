@@ -42,6 +42,7 @@ public class RegistarPaciente extends javax.swing.JFrame {
         // this.objHabitacion = objHabitacion;
         //this.guiMenuMedico = guiMenuMedico;
         initComponents();
+        setLocationRelativeTo(null);
         rbtn_cc.setSelected(true);
         etiqueta = btn_crear.getText();
     }

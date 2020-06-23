@@ -80,7 +80,9 @@ public class PacienteDAO {
     }
     
     public PacienteDTO consultarPacienteId(int idPaciente){
-        PacienteDTO objPaciente = null;
+        //PacienteDTO objPaciente = null;
+        PacienteDTO objPaciente = new PacienteDTO();
+        
         try {
             objConex.conectar();
             
@@ -90,7 +92,7 @@ public class PacienteDAO {
             sentencia.setInt(1, idPaciente);
             ResultSet res = sentencia.executeQuery();
             while(res.next()){
-                objPaciente = new PacienteDTO();
+                //objPaciente = new PacienteDTO();
                 objPaciente.id = idPaciente;
                 objPaciente.tipo_id = res.getString("tipo_id");
                 objPaciente.nombres = res.getString("nombre");

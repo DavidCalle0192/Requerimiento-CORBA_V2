@@ -45,6 +45,7 @@ public class MenuMedico extends javax.swing.JFrame {
         this.co = co;
         //definirRol();
         initComponents();
+        setLocationRelativeTo(null);
         btn_iniciarSeguimiento.setEnabled(false);
         btn_paraSeguimiento.setEnabled(false);
         btn_paraSeguimiento.setVisible(false);
@@ -376,10 +377,14 @@ public class MenuMedico extends javax.swing.JFrame {
             int id = Integer.parseInt(txf_buscarOactualizar.getText());
             txtArea_seguimiento.setText("");
             objusuario = co.obtenerObjGestionPaciente().buscarPaciente(id);
-            String mostrar;
-            if (objusuario == null) {
-                mostrar = "El usuario no se encuentra registrado";
+
+            String mostrar="";
+
+            if (objusuario.nombres.equals("")) {
+             JOptionPane.showMessageDialog(null, "El ID: "+txf_buscarOactualizar.getText()+" No se encuetra registrado.");
+             txf_buscarOactualizar.setText("");
             } else {
+                
                 mostrar
                         = "ID: " + objusuario.id
                         + "\nNombres: " + objusuario.nombres
@@ -392,14 +397,20 @@ public class MenuMedico extends javax.swing.JFrame {
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
         // TODO add your handling code here:
-        if(validar()){
+        if (validar()) {
             int id = Integer.parseInt(txf_buscarOactualizar.getText());
             RegistarPaciente vista = new RegistarPaciente(co);
-            objusuario= co.obtenerObjGestionPaciente().buscarPaciente(id);
-            vista.infoActualizar(objusuario);
-            vista.cambiarEtiqueta();
-            vista.setVisible(true);
-            this.setVisible(false);
+            objusuario = co.obtenerObjGestionPaciente().buscarPaciente(id);
+            if (objusuario.nombres.equals("")) {
+                JOptionPane.showMessageDialog(null, "El ID: "+txf_buscarOactualizar.getText()+" No se encuetra registrado.");
+                txf_buscarOactualizar.setText("");
+            } else {
+                vista.infoActualizar(objusuario);
+                vista.cambiarEtiqueta();
+                vista.setVisible(true);
+                this.setVisible(false);
+            }
+
         }
     }//GEN-LAST:event_btn_actualizarActionPerformed
 

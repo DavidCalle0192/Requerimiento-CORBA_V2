@@ -26,11 +26,13 @@ public class vista1_administrador extends javax.swing.JFrame {
 
     public vista1_administrador() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     public vista1_administrador(ClienteDeObjetos co) {
         this.co = co;
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
