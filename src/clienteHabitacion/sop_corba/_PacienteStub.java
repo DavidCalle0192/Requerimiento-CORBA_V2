@@ -1,4 +1,4 @@
-package cliente.sop_corba;
+package clienteHabitacion.sop_corba;
 
 
 /**
@@ -8,7 +8,7 @@ package cliente.sop_corba;
 * domingo 21 de junio de 2020 06:38:06 PM COT
 */
 
-public class _PacienteStub extends org.omg.CORBA.portable.ObjectImpl implements cliente.sop_corba.Paciente
+public class _PacienteStub extends org.omg.CORBA.portable.ObjectImpl implements clienteHabitacion.sop_corba.Paciente
 {
 
   public void alertarPaciente (String mensaje)

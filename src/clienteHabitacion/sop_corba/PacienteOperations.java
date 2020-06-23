@@ -1,4 +1,4 @@
-package cliente.sop_corba;
+package clienteHabitacion.sop_corba;
 
 
 /**

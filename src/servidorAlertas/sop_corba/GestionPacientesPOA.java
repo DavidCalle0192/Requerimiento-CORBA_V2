@@ -40,7 +40,7 @@ public abstract class GestionPacientesPOA extends org.omg.PortableServer.Servant
        case 0:  // servidorAlertas/sop_corba/GestionPacientes/registrarPaciente
        {
          servidorAlertas.dto.PacienteDTO objPaciente = servidorAlertas.dto.PacienteDTOHelper.read (in);
-         cliente.sop_corba.Paciente refCliente = cliente.sop_corba.PacienteHelper.read (in);
+         clienteHabitacion.sop_corba.Paciente refCliente = clienteHabitacion.sop_corba.PacienteHelper.read (in);
          org.omg.CORBA.StringHolder resultado = new org.omg.CORBA.StringHolder ();
          boolean $result = false;
          $result = this.registrarPaciente (objPaciente, refCliente, resultado);

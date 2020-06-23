@@ -4,13 +4,13 @@
  * and open the template in the editor.
  */
 
-package cliente;
+package clienteHabitacion;
 
-import static cliente.ClienteDeObjetos.ref;
-import cliente.sop_corba.Paciente;
-import cliente.sop_corba.PacienteHelper;
-import cliente.sop_corba.PacienteImpl;
-import cliente.utilidades.UtilidadesConsola;
+import static clienteHabitacion.ClienteDeObjetos.ref;
+import clienteHabitacion.sop_corba.Paciente;
+import clienteHabitacion.sop_corba.PacienteHelper;
+import clienteHabitacion.sop_corba.PacienteImpl;
+import clienteHabitacion.utilidades.UtilidadesConsola;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.omg.CORBA.ORB;

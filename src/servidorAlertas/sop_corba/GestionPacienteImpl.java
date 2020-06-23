@@ -1,6 +1,6 @@
 package servidorAlertas.sop_corba;
 
-import cliente.sop_corba.Paciente;
+import clienteHabitacion.sop_corba.Paciente;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Hashtable;
@@ -128,6 +128,7 @@ public class GestionPacienteImpl implements GestionPacientesOperations {
             log("Identificacion: "+objPaciente.tipo_id+" "+objPaciente.id);
             log("Direccion:"+objPaciente.direccion);
         }else{
+            objPaciente = new PacienteDTO();
             log("No se encontro el paciente con id "+idPaciente);
         }
         return objPaciente;

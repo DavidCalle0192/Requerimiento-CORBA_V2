@@ -1,4 +1,4 @@
-package cliente.sop_corba;
+package clienteHabitacion.sop_corba;
 
 
 /**
@@ -13,17 +13,17 @@ public class PacientePOATie extends PacientePOA
 
   // Constructors
 
-  public PacientePOATie ( cliente.sop_corba.PacienteOperations delegate ) {
+  public PacientePOATie ( clienteHabitacion.sop_corba.PacienteOperations delegate ) {
       this._impl = delegate;
   }
-  public PacientePOATie ( cliente.sop_corba.PacienteOperations delegate , org.omg.PortableServer.POA poa ) {
+  public PacientePOATie ( clienteHabitacion.sop_corba.PacienteOperations delegate , org.omg.PortableServer.POA poa ) {
       this._impl = delegate;
       this._poa      = poa;
   }
-  public cliente.sop_corba.PacienteOperations _delegate() {
+  public clienteHabitacion.sop_corba.PacienteOperations _delegate() {
       return this._impl;
   }
-  public void _delegate (cliente.sop_corba.PacienteOperations delegate ) {
+  public void _delegate (clienteHabitacion.sop_corba.PacienteOperations delegate ) {
       this._impl = delegate;
   }
   public org.omg.PortableServer.POA _default_POA() {
@@ -39,7 +39,7 @@ public class PacientePOATie extends PacientePOA
     _impl.alertarPaciente(mensaje);
   } // alertarPaciente
 
-  private cliente.sop_corba.PacienteOperations _impl;
+  private clienteHabitacion.sop_corba.PacienteOperations _impl;
   private org.omg.PortableServer.POA _poa;
 
 } // class PacientePOATie

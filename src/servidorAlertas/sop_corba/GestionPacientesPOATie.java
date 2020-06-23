@@ -34,7 +34,7 @@ public class GestionPacientesPOATie extends GestionPacientesPOA
           return super._default_POA();
       }
   }
-  public boolean registrarPaciente (servidorAlertas.dto.PacienteDTO objPaciente, cliente.sop_corba.Paciente refCliente, org.omg.CORBA.StringHolder resultado)
+  public boolean registrarPaciente (servidorAlertas.dto.PacienteDTO objPaciente, clienteHabitacion.sop_corba.Paciente refCliente, org.omg.CORBA.StringHolder resultado)
   {
     return _impl.registrarPaciente(objPaciente, refCliente, resultado);
   } // registrarPaciente

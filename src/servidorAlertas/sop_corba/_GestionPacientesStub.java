@@ -11,13 +11,13 @@ package servidorAlertas.sop_corba;
 public class _GestionPacientesStub extends org.omg.CORBA.portable.ObjectImpl implements servidorAlertas.sop_corba.GestionPacientes
 {
 
-  public boolean registrarPaciente (servidorAlertas.dto.PacienteDTO objPaciente, cliente.sop_corba.Paciente refCliente, org.omg.CORBA.StringHolder resultado)
+  public boolean registrarPaciente (servidorAlertas.dto.PacienteDTO objPaciente, clienteHabitacion.sop_corba.Paciente refCliente, org.omg.CORBA.StringHolder resultado)
   {
             org.omg.CORBA.portable.InputStream $in = null;
             try {
                 org.omg.CORBA.portable.OutputStream $out = _request ("registrarPaciente", true);
                 servidorAlertas.dto.PacienteDTOHelper.write ($out, objPaciente);
-                cliente.sop_corba.PacienteHelper.write ($out, refCliente);
+                clienteHabitacion.sop_corba.PacienteHelper.write ($out, refCliente);
                 $in = _invoke ($out);
                 boolean $result = $in.read_boolean ();
                 resultado.value = $in.read_string ();

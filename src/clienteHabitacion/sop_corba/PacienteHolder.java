@@ -1,4 +1,4 @@
-package cliente.sop_corba;
+package clienteHabitacion.sop_corba;
 
 /**
 * cliente/sop_corba/PacienteHolder.java .
@@ -9,30 +9,30 @@ package cliente.sop_corba;
 
 public final class PacienteHolder implements org.omg.CORBA.portable.Streamable
 {
-  public cliente.sop_corba.Paciente value = null;
+  public clienteHabitacion.sop_corba.Paciente value = null;
 
   public PacienteHolder ()
   {
   }
 
-  public PacienteHolder (cliente.sop_corba.Paciente initialValue)
+  public PacienteHolder (clienteHabitacion.sop_corba.Paciente initialValue)
   {
     value = initialValue;
   }
 
   public void _read (org.omg.CORBA.portable.InputStream i)
   {
-    value = cliente.sop_corba.PacienteHelper.read (i);
+    value = clienteHabitacion.sop_corba.PacienteHelper.read (i);
   }
 
   public void _write (org.omg.CORBA.portable.OutputStream o)
   {
-    cliente.sop_corba.PacienteHelper.write (o, value);
+        clienteHabitacion.sop_corba.PacienteHelper.write (o, value);
   }
 
   public org.omg.CORBA.TypeCode _type ()
   {
-    return cliente.sop_corba.PacienteHelper.type ();
+    return clienteHabitacion.sop_corba.PacienteHelper.type ();
   }
 
 }

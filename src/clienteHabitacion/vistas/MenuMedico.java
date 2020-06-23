@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cliente.vistas;
+package clienteHabitacion.vistas;
 
-import cliente.ClienteDeObjetos;
+import clienteHabitacion.ClienteDeObjetos;
 //import cliente.sop_corba.ClsHabitacion;
 //import cliente.sop_corba.HabitacionInt;
 import java.rmi.RemoteException;

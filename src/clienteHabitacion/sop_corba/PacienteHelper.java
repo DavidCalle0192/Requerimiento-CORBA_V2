@@ -1,4 +1,4 @@
-package cliente.sop_corba;
+package clienteHabitacion.sop_corba;
 
 
 /**
@@ -12,7 +12,7 @@ abstract public class PacienteHelper
 {
   private static String  _id = "IDL:cliente/sop_corba/Paciente:1.0";
 
-  public static void insert (org.omg.CORBA.Any a, cliente.sop_corba.Paciente that)
+  public static void insert (org.omg.CORBA.Any a, clienteHabitacion.sop_corba.Paciente that)
   {
     org.omg.CORBA.portable.OutputStream out = a.create_output_stream ();
     a.type (type ());
@@ -20,7 +20,7 @@ abstract public class PacienteHelper
     a.read_value (out.create_input_stream (), type ());
   }
 
-  public static cliente.sop_corba.Paciente extract (org.omg.CORBA.Any a)
+  public static clienteHabitacion.sop_corba.Paciente extract (org.omg.CORBA.Any a)
   {
     return read (a.create_input_stream ());
   }
@@ -30,7 +30,7 @@ abstract public class PacienteHelper
   {
     if (__typeCode == null)
     {
-      __typeCode = org.omg.CORBA.ORB.init ().create_interface_tc (cliente.sop_corba.PacienteHelper.id (), "Paciente");
+      __typeCode = org.omg.CORBA.ORB.init ().create_interface_tc (clienteHabitacion.sop_corba.PacienteHelper.id (), "Paciente");
     }
     return __typeCode;
   }
@@ -40,43 +40,43 @@ abstract public class PacienteHelper
     return _id;
   }
 
-  public static cliente.sop_corba.Paciente read (org.omg.CORBA.portable.InputStream istream)
+  public static clienteHabitacion.sop_corba.Paciente read (org.omg.CORBA.portable.InputStream istream)
   {
     return narrow (istream.read_Object (_PacienteStub.class));
   }
 
-  public static void write (org.omg.CORBA.portable.OutputStream ostream, cliente.sop_corba.Paciente value)
+  public static void write (org.omg.CORBA.portable.OutputStream ostream, clienteHabitacion.sop_corba.Paciente value)
   {
     ostream.write_Object ((org.omg.CORBA.Object) value);
   }
 
-  public static cliente.sop_corba.Paciente narrow (org.omg.CORBA.Object obj)
+  public static clienteHabitacion.sop_corba.Paciente narrow (org.omg.CORBA.Object obj)
   {
     if (obj == null)
       return null;
-    else if (obj instanceof cliente.sop_corba.Paciente)
-      return (cliente.sop_corba.Paciente)obj;
+    else if (obj instanceof clienteHabitacion.sop_corba.Paciente)
+      return (clienteHabitacion.sop_corba.Paciente)obj;
     else if (!obj._is_a (id ()))
       throw new org.omg.CORBA.BAD_PARAM ();
     else
     {
       org.omg.CORBA.portable.Delegate delegate = ((org.omg.CORBA.portable.ObjectImpl)obj)._get_delegate ();
-      cliente.sop_corba._PacienteStub stub = new cliente.sop_corba._PacienteStub ();
+            clienteHabitacion.sop_corba._PacienteStub stub = new clienteHabitacion.sop_corba._PacienteStub ();
       stub._set_delegate(delegate);
       return stub;
     }
   }
 
-  public static cliente.sop_corba.Paciente unchecked_narrow (org.omg.CORBA.Object obj)
+  public static clienteHabitacion.sop_corba.Paciente unchecked_narrow (org.omg.CORBA.Object obj)
   {
     if (obj == null)
       return null;
-    else if (obj instanceof cliente.sop_corba.Paciente)
-      return (cliente.sop_corba.Paciente)obj;
+    else if (obj instanceof clienteHabitacion.sop_corba.Paciente)
+      return (clienteHabitacion.sop_corba.Paciente)obj;
     else
     {
       org.omg.CORBA.portable.Delegate delegate = ((org.omg.CORBA.portable.ObjectImpl)obj)._get_delegate ();
-      cliente.sop_corba._PacienteStub stub = new cliente.sop_corba._PacienteStub ();
+            clienteHabitacion.sop_corba._PacienteStub stub = new clienteHabitacion.sop_corba._PacienteStub ();
       stub._set_delegate(delegate);
       return stub;
     }

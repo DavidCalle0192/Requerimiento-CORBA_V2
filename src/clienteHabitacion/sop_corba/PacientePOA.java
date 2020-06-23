@@ -1,4 +1,4 @@
-package cliente.sop_corba;
+package clienteHabitacion.sop_corba;
 
 
 /**
@@ -9,7 +9,7 @@ package cliente.sop_corba;
 */
 
 public abstract class PacientePOA extends org.omg.PortableServer.Servant
- implements cliente.sop_corba.PacienteOperations, org.omg.CORBA.portable.InvokeHandler
+ implements clienteHabitacion.sop_corba.PacienteOperations, org.omg.CORBA.portable.InvokeHandler
 {
 
   // Constructors

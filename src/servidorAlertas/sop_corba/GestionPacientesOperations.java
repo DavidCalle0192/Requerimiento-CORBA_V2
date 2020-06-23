@@ -10,7 +10,7 @@ package servidorAlertas.sop_corba;
 
 public interface GestionPacientesOperations 
 {
-  boolean registrarPaciente (servidorAlertas.dto.PacienteDTO objPaciente, cliente.sop_corba.Paciente refCliente, org.omg.CORBA.StringHolder resultado);
+  boolean registrarPaciente (servidorAlertas.dto.PacienteDTO objPaciente, clienteHabitacion.sop_corba.Paciente refCliente, org.omg.CORBA.StringHolder resultado);
   boolean actualizarPaciente (servidorAlertas.dto.PacienteDTO objPaciente);
   servidorAlertas.dto.PacienteDTO buscarPaciente (int idPaciente);
   boolean enviarIndicadores (int idPaciente, servidorAlertas.dto.IndicadoresDTO objIndicadores);

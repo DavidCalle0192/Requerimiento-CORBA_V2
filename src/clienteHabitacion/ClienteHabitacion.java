@@ -5,12 +5,12 @@
  */
 package clienteHabitacion;
 
-import cliente.ClienteDeObjetos;
-import cliente.sop_corba.Paciente;
-import cliente.sop_corba.PacienteHelper;
-import cliente.sop_corba.PacienteImpl;
-import cliente.vistas.MenuMedico;
-import cliente.vistas.vista1_administrador;
+import clienteHabitacion.ClienteDeObjetos;
+import clienteHabitacion.sop_corba.Paciente;
+import clienteHabitacion.sop_corba.PacienteHelper;
+import clienteHabitacion.sop_corba.PacienteImpl;
+import clienteHabitacion.vistas.MenuMedico;
+import clienteHabitacion.vistas.vista1_administrador;
 import java.rmi.RemoteException;
 import java.util.Date;
 import java.util.logging.Level;

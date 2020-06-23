@@ -1,9 +1,9 @@
-package cliente;
+package clienteHabitacion;
 
-import cliente.sop_corba.Paciente;
-import cliente.sop_corba.PacienteHelper;
-import cliente.sop_corba.PacienteImpl;
-import cliente.utilidades.UtilidadesConsola;
+import clienteHabitacion.sop_corba.Paciente;
+import clienteHabitacion.sop_corba.PacienteHelper;
+import clienteHabitacion.sop_corba.PacienteImpl;
+import clienteHabitacion.utilidades.UtilidadesConsola;
 import java.util.Date;
 import java.util.Random;
 import org.omg.CORBA.*;

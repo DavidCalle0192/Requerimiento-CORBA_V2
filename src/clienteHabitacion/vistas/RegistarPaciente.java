@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cliente.vistas;
+package clienteHabitacion.vistas;
 
 //import clienteHabitacion.ClienteMedico;
 //import clienteHabitacion.sop_rmi.HabitacionInt;
-import cliente.ClienteDeObjetos;
-import cliente.sop_corba.Paciente;
+import clienteHabitacion.ClienteDeObjetos;
+import clienteHabitacion.sop_corba.Paciente;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
