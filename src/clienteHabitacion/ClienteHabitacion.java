@@ -202,9 +202,9 @@ public class ClienteHabitacion extends javax.swing.JFrame {
         
         co = new ClienteDeObjetos();
         co.principal(TextField_direccion_ip.getText(), TextField_puerto.getText());
-        co.obtenerObjGestionPaciente();
-        int tamArray = co.obtenerObjGestionPaciente().getNumRegistros();//objRemoto.getMaxPacientes();//con este metodo no funciona el servicio registrar 
-        if(tamArray==0){
+        //co.obtenerObjGestionPaciente();
+        //int tamArray = co.obtenerObjGestionPaciente().getNumRegistros();//objRemoto.getMaxPacientes();//con este metodo no funciona el servicio registrar 
+        if(co.obtenerObjGestionPaciente().getMaxPacientes()==-1){
             vista1_administrador v1 = new vista1_administrador(co);
             v1.setVisible(true);
             this.setVisible(false);
