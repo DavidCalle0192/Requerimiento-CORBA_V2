@@ -130,7 +130,7 @@ public class MenuMedico extends javax.swing.JFrame {
                 }
                 //JOptionPane.showMessageDialog(null, " "+co.obtenerServant());
                 txtArea_seguimiento.setText(texto);
-                txtAreaAlerta.setText("Paciente con indicadores fuera de lo normal."+"\n"+alerta+"\n\n");
+                txtAreaAlerta.setText(enviarIndicadores+"\n"+alerta+"\n\n");
 
             }
 
