@@ -455,6 +455,7 @@ public class MenuMedico extends javax.swing.JFrame {
                 txf_buscarOactualizar.setText("");
             } else {
                 vista.infoActualizar(objusuario);
+                
                 vista.cambiarEtiqueta();
                 vista.setVisible(true);
                 this.setVisible(false);

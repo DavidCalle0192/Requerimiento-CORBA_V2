@@ -32,6 +32,7 @@ public class RegistarPaciente extends javax.swing.JFrame {
 
     public static ClienteDeObjetos co;
     String etiqueta;
+    PacienteDTO objusuario;
 
     /**
      * Creates new form prueba
@@ -66,6 +67,7 @@ public class RegistarPaciente extends javax.swing.JFrame {
         } else {
             rbtn_pp.setSelected(true);
         }
+        objusuario=pacienteDTO;
     }
 
     public boolean verificar(String nombres, String apellidos, String direccion) {
@@ -310,11 +312,18 @@ public class RegistarPaciente extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btn_crearActionPerformed
 
+
     private void bnt_volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnt_volverActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         MenuMedico menu;
         menu = new MenuMedico(co);
+        if(objusuario!=null){
+        menu.pasarUsuario(objusuario);
+        menu.cargarInfoUusuario();
+        menu.habilitarActualizar();
+        menu.darVisibilidad();
+        }
         menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_bnt_volverActionPerformed
