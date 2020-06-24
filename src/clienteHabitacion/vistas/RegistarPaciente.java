@@ -279,7 +279,7 @@ public class RegistarPaciente extends javax.swing.JFrame {
                             co.obtenerStringHolder()
                     );
                     if (rta) {
-                        JOptionPane.showMessageDialog(null, "Paciente creado con exito");
+                        JOptionPane.showMessageDialog(null, "El paciente con ID: "+id+" fue creado o actualizado con exito");
                         MenuMedico vista = new MenuMedico(co);
                         vista.habilitarActualizar();
                         vista.pasarUsuario(paciente);
