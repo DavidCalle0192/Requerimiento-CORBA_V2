@@ -9,6 +9,7 @@ package clienteHabitacion.vistas;
 //import clienteHabitacion.sop_rmi.HabitacionInt;
 import clienteHabitacion.ClienteDeObjetos;
 import clienteHabitacion.sop_corba.Paciente;
+import static clienteHabitacion.vistas.MenuMedico.co;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -270,6 +271,18 @@ public class RegistarPaciente extends javax.swing.JFrame {
         } else {//si estan llenos los campo
             if (btn_crear.getText().equals("Crear")) {
                 int id;
+                //-------------
+             id = Integer.parseInt(txf_id.getText());
+            //txtArea_seguimiento.setText("");
+            objusuario = co.obtenerObjGestionPaciente().buscarPaciente(id);
+
+            String mostrar="";
+
+            if (objusuario!=null) {
+             JOptionPane.showMessageDialog(null, "El ID: "+txf_id.getText()+"Se encuetra registrado, por favor ingrese un valor diferente.");
+             //txf_buscarOactualizar.setText("");
+            }else{
+                //-------------
                 if (validarID()) {
                     id = Integer.parseInt(txf_id.getText());
                     paciente = new PacienteDTO(nombres, apellidos, tipoId, id, direccion);
@@ -279,7 +292,7 @@ public class RegistarPaciente extends javax.swing.JFrame {
                             co.obtenerStringHolder()
                     );
                     if (rta) {
-                        JOptionPane.showMessageDialog(null, "El paciente con ID: "+id+" fue creado o actualizado con exito");
+                        JOptionPane.showMessageDialog(null, "El paciente con ID: "+id+" fue creado con exito");
                         MenuMedico vista = new MenuMedico(co);
                         vista.habilitarActualizar();
                         vista.pasarUsuario(paciente);
@@ -290,7 +303,7 @@ public class RegistarPaciente extends javax.swing.JFrame {
                     } else {
                         JOptionPane.showMessageDialog(null, "Ha ocurrido un error al crear el paciente");
                     }
-                }
+                }}
             } else {//se va a actualizar
                 int id = Integer.parseInt(txf_id.getText());
                 paciente = new PacienteDTO(nombres, apellidos, tipoId, id, direccion);
