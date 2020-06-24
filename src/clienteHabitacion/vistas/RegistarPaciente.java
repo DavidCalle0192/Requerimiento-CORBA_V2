@@ -222,14 +222,13 @@ public class RegistarPaciente extends javax.swing.JFrame {
             txf_id.setText("");
             return false;
         } else {
-            PacienteDTO objUsuario = co.obtenerObjGestionPaciente().buscarPaciente(Integer.parseInt(txf_id.getText()));
-            //JOptionPane.showMessageDialog(null, objUsuario.id);
-            if(objUsuario!=null){
-                JOptionPane.showMessageDialog(null, "Existe un paciente registrado con el ID: "+txf_id.getText());
-                return false;
-            }else{
+            //PacienteDTO objUsuario = co.obtenerObjGestionPaciente().buscarPaciente(Integer.parseInt(txf_id.getText()));
+            //if(objUsuario!=null){
+              //  JOptionPane.showMessageDialog(null, "Existe un paciente registrado con el ID: "+txf_id.getText());
+                //return false;
+            //}else{
             return true;
-            }
+            //}
             
         }
     }

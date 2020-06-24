@@ -40,6 +40,8 @@ public class MenuMedico extends javax.swing.JFrame {
     public static String alerta;
     public static int contador;
     int rol;
+    int identificacion;
+    
     PacienteDTO objusuario;
 
     /**
@@ -75,6 +77,7 @@ public class MenuMedico extends javax.swing.JFrame {
     }
 
     public void cargarInfoUusuario() {
+        identificacion=objusuario.id;
         lb_nombre_apellido.setText("Nombre: " + objusuario.nombres + " " + objusuario.apellidos);
         lb_tipo_id.setText("Tipo ID: " + objusuario.tipo_id);
         lb_direccion.setText("Dirección: " + objusuario.direccion);
@@ -442,8 +445,9 @@ public class MenuMedico extends javax.swing.JFrame {
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
         // TODO add your handling code here:
-      
-            int id = Integer.parseInt(txf_buscarOactualizar.getText());
+       // if (validar()) {
+            //int id = Integer.parseInt(txf_buscarOactualizar.getText());
+            int id = identificacion;
             RegistarPaciente vista = new RegistarPaciente(co);
             objusuario = co.obtenerObjGestionPaciente().buscarPaciente(id);
             if (objusuario.nombres.equals("")) {
@@ -456,7 +460,7 @@ public class MenuMedico extends javax.swing.JFrame {
                 this.setVisible(false);
             }
 
-        
+        //}
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
     /**
