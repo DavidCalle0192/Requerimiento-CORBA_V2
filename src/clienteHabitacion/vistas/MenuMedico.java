@@ -68,7 +68,7 @@ public class MenuMedico extends javax.swing.JFrame {
 
     public void definirRol() {
         if (co.obtenerObjGestionPaciente().getNumRegistros() == 0) {
-            lb_menuMedico.setText("Menú administrador");
+            //lb_menuMedico.setText("Menú administrador");
         }
     }
 
