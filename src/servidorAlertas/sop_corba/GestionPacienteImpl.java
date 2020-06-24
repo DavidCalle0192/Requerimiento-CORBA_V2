@@ -144,6 +144,7 @@ public class GestionPacienteImpl implements GestionPacientesOperations {
      */
     @Override
     public boolean enviarIndicadores(int idPaciente, IndicadoresDTO objIndicadores) {
+        boolean aux=false;
         log("\nEjecutando enviarIndicadores...");
         
         int puntuacion = obtenerPuntuacion(objIndicadores);
@@ -162,8 +163,9 @@ public class GestionPacienteImpl implements GestionPacientesOperations {
             objRefRemotaNotificaciones.enviarAlerta(objHistorial);
             Pair<PacienteDTO,Paciente> objCliente = objRegistros.get(idPaciente);
             objCliente.getValue().alertarPaciente("Paciente con indicadores fuera de lo normal");
+            aux=true;
         }
-        return true;
+        return aux;
     }
     
     private HistorialAlertasDTO obtenerHistorial(int idPaciente) {

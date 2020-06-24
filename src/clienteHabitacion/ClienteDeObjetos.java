@@ -59,7 +59,7 @@ public class ClienteDeObjetos {
             org.omg.CORBA.Object refCliente = rootpoa.servant_to_reference(clienteCallbackImpl);
             // obtiene la referencia del objeto callback
             objcllbck = PacienteHelper.narrow(refCliente);
-            Date objDate = new Date();
+           
             resultado = new StringHolder("");
         } catch (Exception e) {
             System.out.println("ERROR : " + e);

@@ -11,4 +11,5 @@ package clienteHabitacion.sop_corba;
 public interface PacienteOperations 
 {
   void alertarPaciente (String mensaje);
+  //String retornarmsj();
 } // interface PacienteOperations

@@ -9,6 +9,8 @@ import clienteHabitacion.ClienteDeObjetos;
 //import cliente.sop_corba.ClsHabitacion;
 //import cliente.sop_corba.HabitacionInt;
 import java.rmi.RemoteException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
@@ -35,6 +37,8 @@ public class MenuMedico extends javax.swing.JFrame {
     public static String texto;
     public static int aux = 0;//controla la existencia de pacientes registrados 
     public static String enviarIndicadores;
+    public static String alerta;
+    public static int contador;
     int rol;
     PacienteDTO objusuario;
 
@@ -49,9 +53,13 @@ public class MenuMedico extends javax.swing.JFrame {
         btn_iniciarSeguimiento.setEnabled(false);
         btn_paraSeguimiento.setEnabled(false);
         btn_paraSeguimiento.setVisible(false);
+        btn_actualizar.setEnabled(false);
 
     }
 
+    public void habilitarActualizar(){
+        btn_actualizar.setEnabled(true);
+    }
     public void pasarUsuario(PacienteDTO objpacientedto) {
         objusuario = objpacientedto;
     }
@@ -81,6 +89,8 @@ public class MenuMedico extends javax.swing.JFrame {
 
     public void hilo() {
         enviarIndicadores = "";
+        alerta ="";
+        contador = 0;
         texto = "";
         bandera = 0;
         txtArea_seguimiento.setText("");
@@ -93,9 +103,19 @@ public class MenuMedico extends javax.swing.JFrame {
                 if (bandera == 1) {
                     timer.cancel();
                 } else {
-
+                    
                     IndicadoresDTO indicador = co.iniciarSeguimiento(objusuario.id);
-                    co.obtenerObjGestionPaciente().enviarIndicadores(objusuario.id, indicador);
+                    boolean respuesta = co.obtenerObjGestionPaciente().enviarIndicadores(objusuario.id, indicador);
+                    if(respuesta){
+                        Date objDate = new Date();
+                        String strDateFormat = "hh: mm: ss a dd-MMM-aaaa"; // El formato de fecha está especificado  
+                        SimpleDateFormat objSDF = new SimpleDateFormat(strDateFormat); // La cadena de formato de fecha se pasa como un argumento al objeto
+                        enviarIndicadores = "Paciente con indicadores fuera de lo normal.";
+                        contador++;
+                        alerta=alerta+"Se ha presentado "+contador+" Alertas: "+objSDF.format(objDate)+"\n";
+                    }else{
+                        enviarIndicadores ="Paciente con indicadores estables.";
+                    }
                     //ref.enviarIndicadores(objusuario.id, indicador);
                     texto = texto
                             + "ID paciente: " + objusuario.id
@@ -105,7 +125,9 @@ public class MenuMedico extends javax.swing.JFrame {
                             + "\nRespuesta: " + enviarIndicadores
                             + "\n\n";
                 }
+                //JOptionPane.showMessageDialog(null, " "+co.obtenerServant());
                 txtArea_seguimiento.setText(texto);
+                txtAreaAlerta.setText(alerta);
 
             }
 
@@ -139,6 +161,9 @@ public class MenuMedico extends javax.swing.JFrame {
         btn_actualizar = new javax.swing.JButton();
         txf_buscarOactualizar = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtAreaAlerta = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -249,38 +274,49 @@ public class MenuMedico extends javax.swing.JFrame {
 
         jLabel1.setText("ID");
 
+        txtAreaAlerta.setColumns(20);
+        txtAreaAlerta.setRows(5);
+        txtAreaAlerta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jScrollPane2.setViewportView(txtAreaAlerta);
+
+        jLabel2.setText("Alertas");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+                        .addGap(25, 25, 25)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(btn_buscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btn_actualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txf_buscarOactualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(btn_buscar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_actualizar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txf_buscarOactualizar))
                             .addComponent(btn_salir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btn_limpiar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE))))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(11, 11, 11)
@@ -289,11 +325,16 @@ public class MenuMedico extends javax.swing.JFrame {
                             .addComponent(txf_buscarOactualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(30, 30, 30)
                         .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
 
         pack();
@@ -308,6 +349,7 @@ public class MenuMedico extends javax.swing.JFrame {
     private void btn_registrarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_registrarPacienteActionPerformed
 
         aux = 1;
+        
         if (co.obtenerObjGestionPaciente().getNumRegistros() == co.obtenerObjGestionPaciente().getMaxPacientes()) {
             JOptionPane.showMessageDialog(null, "Se ha llegado al maximo de registros");
         } else {
@@ -372,6 +414,8 @@ public class MenuMedico extends javax.swing.JFrame {
             return true;
         }
     }
+    
+    
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
         // TODO add your handling code here:
         if (validar()) {
@@ -398,7 +442,7 @@ public class MenuMedico extends javax.swing.JFrame {
 
     private void btn_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_actualizarActionPerformed
         // TODO add your handling code here:
-        if (validar()) {
+      
             int id = Integer.parseInt(txf_buscarOactualizar.getText());
             RegistarPaciente vista = new RegistarPaciente(co);
             objusuario = co.obtenerObjGestionPaciente().buscarPaciente(id);
@@ -412,7 +456,7 @@ public class MenuMedico extends javax.swing.JFrame {
                 this.setVisible(false);
             }
 
-        }
+        
     }//GEN-LAST:event_btn_actualizarActionPerformed
 
     /**
@@ -466,13 +510,16 @@ public class MenuMedico extends javax.swing.JFrame {
     private javax.swing.JButton btn_registrarPaciente;
     private javax.swing.JButton btn_salir;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lb_direccion;
     private javax.swing.JLabel lb_menuMedico;
     private javax.swing.JLabel lb_nombre_apellido;
     private javax.swing.JLabel lb_tipo_id;
     private javax.swing.JTextField txf_buscarOactualizar;
+    private javax.swing.JTextArea txtAreaAlerta;
     private javax.swing.JTextArea txtArea_seguimiento;
     // End of variables declaration//GEN-END:variables
 }

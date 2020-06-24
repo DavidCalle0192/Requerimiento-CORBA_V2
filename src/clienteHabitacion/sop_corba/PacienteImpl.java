@@ -12,6 +12,8 @@ package clienteHabitacion.sop_corba;
  */
 public class PacienteImpl extends PacientePOA{
 
+   // MenuMedico mm;
+    
     public PacienteImpl() {
     }
     

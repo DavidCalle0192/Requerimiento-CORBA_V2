@@ -73,7 +73,7 @@ public class ClienteDeObjetosPrueba {
             System.out.println("Nombre:"+objPaciente.nombres);
             System.out.println("Apellido:"+objPaciente.apellidos);
             System.out.println("Direccion:"+objPaciente.direccion);*/
-            //ref.enviarIndicadores(1058,new IndicadoresDTO(100, 100, 40));
+            ref.enviarIndicadores(1058,new IndicadoresDTO(100, 100, 40,1058));
         } catch (AdapterInactive ex) {
             Logger.getLogger(ClienteDeObjetosPrueba.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InvalidName ex) {
