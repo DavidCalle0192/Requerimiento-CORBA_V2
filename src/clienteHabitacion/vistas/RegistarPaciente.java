@@ -212,7 +212,8 @@ public class RegistarPaciente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public boolean validarID() {
+    public boolean validarID(int id) {
+        objusuario = co.obtenerObjGestionPaciente().buscarPaciente(id);
         if (txf_id.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "El campo ID se encuentra vacio");
             return false;
@@ -224,17 +225,21 @@ public class RegistarPaciente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ingrese un valor númerico positivo en el campo ID");
             txf_id.setText("");
             return false;
+        }else if(objusuario.id==id){
+            JOptionPane.showMessageDialog(null, "El ID: "+txf_id.getText()+"Se encuetra registrado, Por favor ingrese un valor diferente.");
+            return false;
         } else {
             //PacienteDTO objUsuario = co.obtenerObjGestionPaciente().buscarPaciente(Integer.parseInt(txf_id.getText()));
             //if(objUsuario!=null){
               //  JOptionPane.showMessageDialog(null, "Existe un paciente registrado con el ID: "+txf_id.getText());
                 //return false;
             //}else{
-            return true;
+         
             //}
-            
         }
-    }
+        return true;
+        }
+    
 
     public boolean esNumerico(String cadena) {
 
@@ -272,18 +277,9 @@ public class RegistarPaciente extends javax.swing.JFrame {
             if (btn_crear.getText().equals("Crear")) {
                 int id;
                 //-------------
-             id = Integer.parseInt(txf_id.getText());
-            //txtArea_seguimiento.setText("");
-            objusuario = co.obtenerObjGestionPaciente().buscarPaciente(id);
-
-            String mostrar="";
-
-            if (objusuario!=null) {
-             JOptionPane.showMessageDialog(null, "El ID: "+txf_id.getText()+"Se encuetra registrado, por favor ingrese un valor diferente.");
-             //txf_buscarOactualizar.setText("");
-            }else{
+                id = Integer.parseInt(txf_id.getText());
                 //-------------
-                if (validarID()) {
+                if (validarID(id)) {
                     id = Integer.parseInt(txf_id.getText());
                     paciente = new PacienteDTO(nombres, apellidos, tipoId, id, direccion);
                     boolean rta = co.obtenerObjGestionPaciente().registrarPaciente(//Se crea/registra paciente
@@ -303,7 +299,7 @@ public class RegistarPaciente extends javax.swing.JFrame {
                     } else {
                         JOptionPane.showMessageDialog(null, "Ha ocurrido un error al crear el paciente");
                     }
-                }}
+                }
             } else {//se va a actualizar
                 int id = Integer.parseInt(txf_id.getText());
                 paciente = new PacienteDTO(nombres, apellidos, tipoId, id, direccion);
