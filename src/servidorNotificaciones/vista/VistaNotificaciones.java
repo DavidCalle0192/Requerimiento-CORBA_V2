@@ -127,11 +127,11 @@ public class VistaNotificaciones extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Fecha", "Hora", "Puntuación"
+                "Fecha", "Hora", "Puntuación", "FC", "FR", "ToC"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -312,7 +312,8 @@ public class VistaNotificaciones extends javax.swing.JFrame {
             AlertaDTO objAlertaTemp = objHistorial.alertas[i];
             if(objAlertaTemp!=null)
                 if(objAlertaTemp.puntuacion!=-1)
-                    modelHis.addRow(new Object[]{objAlertaTemp.fecha,objAlertaTemp.hora,objAlertaTemp.puntuacion+""});
+                    modelHis.addRow(new Object[]{objAlertaTemp.fecha,objAlertaTemp.hora,objAlertaTemp.puntuacion+"",
+                    objAlertaTemp.indicadores.frecuenciaCardiaca+"",objAlertaTemp.indicadores.frecuenciaRespiratoria+"",objAlertaTemp.indicadores.temperatura+""});
         }
     }
 
